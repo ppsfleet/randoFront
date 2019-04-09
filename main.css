@@ -1,0 +1,54 @@
+body,html
+{
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+h1
+{
+    text-align: center;
+}
+
+step-element
+{
+    margin: auto;
+    display: block;
+    width: 500px;
+}
+
+form
+{
+    text-align: center;
+}
+
+main
+{
+    display: flex;
+    height: 100vh;
+}
+
+section
+{
+    flex: 1;
+    padding-top: 10px;
+}
+
+aside
+{
+    flex-basis: 400px;
+    width: 400px;
+    background-color: white;
+    border-left: 2px solid black;
+}
+
+aside p
+{
+    padding: 5px;
+    border-top: 1px solid gray;
+}
+
+h2
+{
+    text-align: center;
+}
