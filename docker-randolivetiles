@@ -1,0 +1,29 @@
+FROM opensuse/tumbleweed
+#outils de base
+RUN zypper in -y curl git unzip 
+
+# repo pour scala
+RUN zypper addrepo -G https://download.opensuse.org/repositories/devel:languages:scala/openSUSE_Tumbleweed/devel:languages:scala.repo
+
+# repo pour sbt
+RUN curl https://bintray.com/sbt/rpm/rpm > bintray-sbt-rpm.repo
+RUN zypper addrepo -G bintray-sbt-rpm.repo
+
+# c'est bon on peut lancer les installations
+RUN zypper refresh
+RUN zypper in -y scala sbt
+
+# clonage du projet
+RUN git clone https://github.com/ppsfleet/randolivetiles.git
+WORKDIR /randolivetiles
+
+# un fix (surement moche) pour faire fonctionner sbt
+RUN rm /etc/inputrc
+
+RUN sbt dist
+
+WORKDIR /randolivetiles/target/universal
+RUN unzip randolivetiles-1.0-SNAPSHOT.zip
+
+WORKDIR /randolivetiles/target/universal/randolivetiles-1.0-SNAPSHOT/bin
+CMD ["/randolivetiles/target/universal/randolivetiles-1.0-SNAPSHOT/bin/randolivetiles","-Dplay.crypto.secret=abcdefghijk"]
