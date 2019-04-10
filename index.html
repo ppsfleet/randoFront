@@ -2,11 +2,148 @@
   <head>
     <title></title>
     <meta content="">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/elaine-sans" type="text/css"/> 
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <style></style>
   </head>
   <body>
-    <h1>RandoLiveTiles</h1>
+      <header class="top">
+        <h1 class="top__main-title">RandoLiveTiles</h1>
+        <nav class="tabs">
+          <a class="tabs__tab tabs__tab--selected" href="index.html">Documentation</a>
+          <a class="tabs__tab" href="generation.html">Test</a>
+        </nav>
+      </header>
+      <main>
+          <section>
+            <article class="application">
+                <header class="application__description">
+                    <h2 class="application__title">Service 1</h2>
+                    <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
+                </header>
+            </article>
 
+            <article class="application">
+                <header class="application__description">
+                    <h2 class="application__title">Service 2</h2>
+                    <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
+                </header>
+            </article>
+
+            <article class="application">
+                <header class="application__description">
+                    <h2 class="application__title">Service 3</h2>
+                    <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
+                </header>
+            </article>
+
+            <article class="application">
+                <header class="application__description">
+                    <h2 class="application__title">Service 4</h2>
+                    <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
+                </header>
+            </article>
+
+            <article class="application">
+                <header class="application__description">
+                    <h2 class="application__title">Service 5</h2>
+                    <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
+                </header>
+            </article>
+
+            <article class="application">
+                <header class="application__description">
+                    <h2 class="application__title">Service 6</h2>
+                    <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
+                </header>
+            </article>
+
+            <article class="application">
+                <header class="application__description">
+                    <h2 class="application__title">Service 7</h2>
+                    <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/hdfsup</a>
+                </header>
+                <div class="route">
+                  <header class="route__top">
+                    <h3 class="route__title"><span class="route__verbe">GET</span> /file</h3>
+                    <div class="route__description">Demmare l'upload de fichier vers hdfs et renvoie l'id du processus en cours</div>
+                  </header>
+                  <div class="route__content">
+                    <div class="route__input">
+                      <div class="route__subtitle">Entrée</div>
+                        - Paramètre GET:
+                        <pre>file : url du fichier en local</pre>
+                      </ul>
+                    </div>
+                    
+                    <div class="route__output">
+                        <div class="route__subtitle">Sortie</div>
+                        <pre>id</pre>
+                    </div>
+
+                    <div class="route__exemple">
+                        <div class="route__subtitle">Exemple</div>
+                          Get http://localhost:12402?file=/tuiles/tuiles
+                          <pre>1</pre>
+                    </div>
+                  </div>
+                </div>
+                <div class="route">
+                  <header class="route__top">
+                      <h3 class="route__title"><span class="route__verbe">GET</span> /status</h3>
+                      <div class="route__description">Renvoie le status du processus avec l'id demandé</div>
+                  </header>
+                  <div class="route__content">
+                    <div class="route__input">
+                        <div class="route__subtitle">Entrée</div>
+                        - Paramètre GET:
+                        <pre>id : id du processus</pre>
+                    </div>
+                    <div class="route__output">
+                        <div class="route__subtitle">Sortie</div>
+                        <pre>
+{
+  "name": "name",
+  "status": "Image already downloaded"
+}
+                        </pre>
+                    </div>
+                  </div>
+                </div>
+            </article>
+
+            <article class="application">
+                <header class="application__description">
+                    <h2 class="application__title">Service 8</h2>
+                    <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
+                </header>
+            </article>
+
+            <article class="application">
+                <header class="application__description">
+                    <h2 class="application__title">Service 9</h2>
+                    <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
+                </header>
+            </article>
+          </section>
+      </main>
+      <script>
+        window.onload = function(){
+                var acc = document.getElementsByClassName("route__top");
+                for (let i = 0; i < acc.length; i++) {
+                  acc[i].addEventListener("click", function() {
+                  /* Toggle between adding and removing the "active" class,
+                  to highlight the button that controls the panel */
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight){
+                      panel.style.maxHeight = null;
+                    } else {
+                      panel.style.maxHeight = panel.scrollHeight + "px";
+                    } 
+                  })
+                }
+        }         
+      </script>
   </body>
 </html>

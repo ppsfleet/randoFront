@@ -3,11 +3,139 @@ body,html
     margin: 0;
     width: 100%;
     height: 100vh;
+    box-sizing: border-box;
+    font-family: 'ElaineSansRegular'; 
+    display: flex;
+    flex-direction: column;
 }
 
-h1
+pre
+{
+    border-left: 1px solid gray;
+    padding-left: 10px;
+}
+
+.top
+{
+    background-color: #ff6f61;
+    color: white;
+    padding-top: 80px;
+    font-family: 'ElaineSansRegular'; 
+}
+
+.top__main-title
 {
     text-align: center;
+    margin: 0;
+    font-size: 4em;
+}
+
+.tabs
+{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.tabs__tab
+{
+    display: inline-block;
+    padding: 10px;
+    min-width: 200px;
+    color: white;
+    font-size: 1.5em;
+}
+
+.tabs__tab--selected
+{
+    border-bottom: none;
+    border-top: 2px solid white;
+}
+
+main
+{
+    display: flex;
+    flex-grow: 1;
+}
+
+section
+{
+    flex: 1;
+    padding-top: 10px;
+}
+
+.application
+{
+    width: 800px;
+    margin: auto;
+    box-shadow: 0px 0px 60px rgba(150,150,150,0.1);
+    padding: 10px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
+.application__description
+{
+    text-align: center;
+}
+
+.application__title
+{
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-size: 1.8em;
+}
+
+.route__top
+{
+    position: relative;
+}
+
+.route__title
+{
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.route__description
+{
+    margin-bottom: 10px;
+}
+
+.route__top:after {
+    content: '\002B';
+    font-weight: bold;
+position: absolute;
+    margin-left: 5px;
+    right: 10px;
+    top:5px;
+}
+
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+  }
+
+.route__verbe
+{
+    color:#ff6f61;
+}
+
+.route__subtitle
+{
+    font-size: 1.4em;
+}
+
+.route__content
+{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+aside
+{
+    flex-basis: 400px;
+    width: 400px;
+    background-color: white;
+    border-left: 2px solid black;
 }
 
 step-element
@@ -22,25 +150,7 @@ form
     text-align: center;
 }
 
-main
-{
-    display: flex;
-    height: 100vh;
-}
 
-section
-{
-    flex: 1;
-    padding-top: 10px;
-}
-
-aside
-{
-    flex-basis: 400px;
-    width: 400px;
-    background-color: white;
-    border-left: 2px solid black;
-}
 
 aside p
 {
