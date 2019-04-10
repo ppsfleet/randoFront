@@ -1,0 +1,7 @@
+FROM fedora:29
+RUN dnf install -y git redhat-rpm-config gcc python3 gcc-c++ python3-devel gdal-devel
+RUN git clone https://github.com/ppsfleet/satiles.git
+WORKDIR /satiles
+RUN pip3 install -r requirements.txt
+
+CMD ["python3","satiles.py"]
