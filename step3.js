@@ -1,13 +1,7 @@
 class Step3 extends Step {
-    constructor(element,logs) {
-        super(element,logs);
-        this.html.setAttribute("name","Geolocalisation des ENS ");
-    }
 
     start(places) {
         this.html.setAttribute("status",1);
-        this.addlog("starting service 3")
-        console.log(places)
 
         var xmlhttp = new XMLHttpRequest();
 
@@ -19,23 +13,17 @@ class Step3 extends Step {
                     this.next(coords)
                }
                else if (xmlhttp.status == 400) {
-                    this.addcustomlog("bad request")
                     this.html.setAttribute("status",0)
                }
                else {
-                    this.addcustomlog("ckc")
                     this.html.setAttribute("status",0)
                }
             }
         };
     
-        xmlhttp.open("POST", "http://127.0.0.1:9000/locateentities", true);
+        xmlhttp.open("POST", "http://127.0.0.1:12401/locateentities", true);
         xmlhttp.setRequestHeader("Content-Type", "application/json");
         xmlhttp.send(JSON.stringify({places:places}));
-    }
-
-    addcustomlog(text) {
-        this.addlog("Service 3:"+text)
     }
 
 }

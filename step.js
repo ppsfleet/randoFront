@@ -1,3 +1,4 @@
+/*
 class StepDom extends HTMLElement {
     constructor() {
       super();
@@ -69,19 +70,13 @@ class StepDom extends HTMLElement {
 }
 
 customElements.define('step-element', StepDom);
-
+*/
 
 class Step {
-  constructor(elementToappend,logs,next) {
-    this.html = document.createElement("step-element")
-    this.logs = logs
-    elementToappend.appendChild(this.html)
-    
-  }
-
-  addlog(text)
-  {
-    logs.innerHTML += "<p>"+text+"</p>";
+  constructor(ExempleContainer,appContainer) {
+    this.ExempleContainer = ExempleContainer
+    this.appContainer = appContainer
+    this.html = appContainer
   }
 
   addCallback(next) {

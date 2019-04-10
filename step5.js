@@ -28,7 +28,7 @@ class Step5 extends Step {
             }
         };
     
-        xmlhttp.open("GET", "http://127.0.0.1:9000/satelliteimage/-1.17215,43.127307,1.939431,44.445408?dateBegin=2019-03-23T15:53:00Z&dateEnd=2019-03-27T15:53:00Z", true);
+        xmlhttp.open("GET", "http://127.0.0.1:12401/satelliteimage/-1.17215,43.127307,1.939431,44.445408?dateBegin=2019-03-23T15:53:00Z&dateEnd=2019-03-27T15:53:00Z", true);
         xmlhttp.setRequestHeader("Content-Type", "application/json");
         xmlhttp.send(JSON.stringify({geolocs:coords}));
     }
