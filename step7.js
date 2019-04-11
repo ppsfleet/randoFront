@@ -46,6 +46,9 @@ class Step7 extends Step {
                     {
                         clearTimeout(this.timer)
                         this.html.setAttribute("status",2)
+                        let data = st5.imageData
+                        data.url = res.url
+                        this.next(data) 
                     }
                }
                else if (xmlhttp.status == 400) {

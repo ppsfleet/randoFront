@@ -35,7 +35,6 @@ class Step6 extends Step {
 
     checkStatus() {
         var xmlhttp = new XMLHttpRequest();
-        console.log("plouf")
         xmlhttp.onreadystatechange = () => {
             if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
                if (xmlhttp.status == 200 || xmlhttp.status == 201 || xmlhttp.status == 202 || xmlhttp.status == 203) {

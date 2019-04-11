@@ -1,6 +1,6 @@
 FROM opensuse/tumbleweed
 #outils de base
-RUN zypper in -y curl git unzip 
+RUN zypper in -y curl git unzip wget
 
 # repo pour scala
 RUN zypper addrepo -G https://download.opensuse.org/repositories/devel:languages:scala/openSUSE_Tumbleweed/devel:languages:scala.repo
@@ -12,6 +12,11 @@ RUN zypper addrepo -G bintray-sbt-rpm.repo
 # c'est bon on peut lancer les installations
 RUN zypper refresh
 RUN zypper in -y scala sbt
+
+# elastic search
+# RUN wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.0.0-x86_64.rpm
+# RUN rpm -i elasticsearch-7.0.0-x86_64.rpm
+# RUN /usr/share/elasticsearch/bin/elasticsearch -d -p pid
 
 # clonage du projet
 RUN git clone https://github.com/ppsfleet/randolivetiles.git

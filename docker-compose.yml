@@ -5,7 +5,11 @@ services:
         context: .
         dockerfile: ./docker-randolivetiles
     ports:
-    - "12401:9000"
+      - "12401:9000"
+    links:
+      - elastic:localhost
+    depends_on:
+      - elastic
   hdfsup:
     env_file:
       - .env
@@ -13,7 +17,7 @@ services:
         context: .
         dockerfile: ./docker-hdfsup
     ports:
-    - "12402:8763"
+      - "12402:8763"
     volumes:
        - tuiles:/tuiles
        - ./ssh:/root/.ssh
@@ -24,9 +28,14 @@ services:
         context: .
         dockerfile: ./docker-satiles
     ports:
-    - "12403:8080"
+      - "12403:8080"
     volumes:
        - tuiles:/tuiles
+  elastic:
+    image: elasticsearch:6.7.0
+    ports:
+      - "9300:9300"
+      - "9200:9200"
 volumes:
   tuiles:
 

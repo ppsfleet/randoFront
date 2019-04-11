@@ -13,6 +13,8 @@
     <script src="step5.js"></script>
     <script src="step6.js"></script>
     <script src="step7.js"></script>
+    <script src="step8.js"></script>
+
   </head>
   <body>
       <header class="top">
@@ -26,7 +28,7 @@
             <label for="date1">Date fin:</label> 
             <input id="date2" type="date"/> 
             <br/>
-            <input type="button" value="Démarrer" onclick="start()"/> 
+            <input type="button" value="Démmarer" onclick="start()"/> 
           </form>
       </header>
       <main>
@@ -150,7 +152,7 @@
                 <div class="route">
                   <header class="route__top">
                     <h3 class="route__title"><span class="route__verbe">POST</span> <span class="route__server">127.0.0.1:12401</span>/mainUTM</h3>
-                    <div class="route__description">Calcul la zone géographique des géolocalisations passées en paramètre</div>
+                    <div class="route__description">Calcul la zone géographique (Geobox) des géolocalisations passées en paramètre</div>
                   </header>
                   
                   <div class="route__content">
@@ -186,7 +188,7 @@
                 <div class="route">
                   <header class="route__top">
                     <h3 class="route__title"><span class="route__verbe">GET</span> <span class="route__server">127.0.0.1:12401</span>/satelliteimage/:zone</h3>
-                    <div class="route__description">Récupére une liste d’images satellites sentinelle 2 dans la zone et l'intervalle de date demandés</div>
+                    <div class="route__description">Récupére une liste d’images satellites sentinelle 2 dans la zone geobox et l'intervalle de date demandés</div>
                   </header>
                   
                   <div class="route__content">
@@ -352,6 +354,32 @@
                     <h2 class="application__title">Service 8</h2>
                     <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
                 </header>
+                <div class="route">
+                  <header class="route__top">
+                    <h3 class="route__title"><span class="route__verbe">POST</span> <span class="route__server">127.0.0.1:12401</span>http://127.0.0.1:12401/indexelastic/</h3>
+                    <div class="route__description">Insére les meta-données de l’image dans un elastic search</div>
+                  </header>
+                  
+                  <div class="route__content">
+                    <!--------- input ----------->
+                    <div class="route__input">
+                      <div class="route__subtitle">Entrée</div>
+                        - Paramètre POST:
+                        <pre>{"location":...,"projection":...,"url":...,"cloudCover":...,"date":...,"level":...,"url":path_hdfs}</pre>
+                      </ul>
+                    </div>
+                    <!--------- output ---------->
+                    <div class="route__output">
+                        <div class="route__subtitle">Sortie</div>
+                        <pre>/path/to/img/dir/07ddd0cf-defa-53e8-ac34-c8a1b3e8cb7c</pre>
+                    </div>
+                    <!--------- exemple --------->
+                    <div class="route__exemple">
+                        <div class="route__subtitle">Exemple</div>
+                        <div id="app8-exemple"></div>
+                    </div>
+                  </div>
+                </div>
             </article>
 
 <!-- 9 -------------------------------------------------------------------------------------------------------------------------------->
@@ -378,6 +406,7 @@
             document.getElementById("app7-exemple"),
             document.getElementById("app7-exemple2")],
             document.getElementById("app7"))
+        let st8 = new Step8([document.getElementById("app8-exemple")],document.getElementById("app8"))
         
         
         st1.addCallback((e) => {st2.start(e)})
@@ -390,6 +419,7 @@
         })
         st5.addCallback((e) => {st6.start(e)})
         st6.addCallback((e) => {st7.start(e)})
+        st7.addCallback((e) => {st8.start(e)})
 
 
         function start()
