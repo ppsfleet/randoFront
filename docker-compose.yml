@@ -7,6 +7,8 @@ services:
     ports:
     - "12401:9000"
   hdfsup:
+    env_file:
+      - .env
     build: 
         context: .
         dockerfile: ./docker-hdfsup
@@ -16,6 +18,8 @@ services:
        - tuiles:/tuiles
        - ./ssh:/root/.ssh
   satiles:
+    env_file:
+      - .env
     build: 
         context: .
         dockerfile: ./docker-satiles

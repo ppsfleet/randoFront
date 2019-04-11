@@ -297,7 +297,7 @@
                     <div class="route__input">
                       <div class="route__subtitle">Entrée</div>
                         - Paramètre GET:
-                        <pre>file : url du fichier en local</pre>
+                        <pre>path : url du fichier en local</pre>
                       </ul>
                     </div>
                     <!--------- output ---------->
@@ -323,15 +323,16 @@
                     <div class="route__input">
                         <div class="route__subtitle">Entrée</div>
                         - Paramètre GET:
-                        <pre>id : id du processus</pre>
+                        <pre>pid : id du processus</pre>
                     </div>
                     <!--------- output ---------->
                     <div class="route__output">
                         <div class="route__subtitle">Sortie</div>
                         <pre>
 {
-  "name": "name",
-  "status": "Image already downloaded"
+  "cmd": "scp ou hadoop",
+  "running": 1 ou 0,
+  "error": 1 ou 0
 }
                         </pre>
                     </div>

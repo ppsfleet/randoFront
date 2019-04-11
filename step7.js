@@ -22,7 +22,7 @@ class Step7 extends Step {
             }
         };
 
-        let url = "http://127.0.0.1:12402/file?file="+path_image
+        let url = "http://127.0.0.1:12402/file?path="+path_image
         
         this.exempleContainer[0].innerHTML = "GET " +url+ "<br/>"
 
@@ -36,10 +36,16 @@ class Step7 extends Step {
             if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
                if (xmlhttp.status == 200 || xmlhttp.status == 201 || xmlhttp.status == 202 || xmlhttp.status == 203) {
                     this.exempleContainer[1].innerHTML += "Réponse: <pre>"+xmlhttp.responseText+"</pre><br/>";
-                    if (xmlhttp.responseText == "true")
+                    let res = JSON.parse(xmlhttp.responseText)
+                    if(res.error == "1")
                     {
-                        this.html.setAttribute("status",2)
                         clearTimeout(this.timer)
+                        this.html.setAttribute("status",0)
+                    }
+                    else if (res.cmd == "ssh hadoop" && res.running == "0")
+                    {
+                        clearTimeout(this.timer)
+                        this.html.setAttribute("status",2)
                     }
                }
                else if (xmlhttp.status == 400) {
@@ -50,7 +56,7 @@ class Step7 extends Step {
                }
             }
         };
-        let url = "127.0.0.1:12402/status?id="+this.id
+        let url = "http://127.0.0.1:12402/status?pid="+this.id
         
         this.exempleContainer[1].innerHTML = "GET " +url+ "<br/>"
         xmlhttp.open("GET", url, true);

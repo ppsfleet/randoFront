@@ -6,7 +6,6 @@ class Step5 extends Step {
 
     start(coords,date1,date2) {
         this.html.setAttribute("status",1);
-        console.log("plouf")
         var xmlhttp = new XMLHttpRequest();
 
         xmlhttp.onreadystatechange = () => {
