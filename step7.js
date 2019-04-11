@@ -1,6 +1,6 @@
 class Step7 extends Step {
 
-    start(url_image) {
+    start(path_image) {
         this.html.setAttribute("status",1);
 
         var xmlhttp = new XMLHttpRequest();
@@ -9,8 +9,7 @@ class Step7 extends Step {
             if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
                 if (xmlhttp.status == 200 || xmlhttp.status == 201 || xmlhttp.status == 202 || xmlhttp.status == 203) {
                     this.exempleContainer[0].innerHTML += "Réponse: <pre>"+xmlhttp.responseText+"</pre>";
-                    this.urlFile = xmlhttp.responseText
-                    this.fileName = this.urlFile.split("/").pop();
+                    this.id = xmlhttp.responseText
                     this.timer = setInterval(() => this.checkStatus(), 10000)
                }
                else if (xmlhttp.status == 400) {
@@ -22,20 +21,17 @@ class Step7 extends Step {
                }
             }
         };
-        let args = JSON.stringify({url:url_image})
-        let url = "http://127.0.0.1:12403/"
-        
-        this.exempleContainer[0].innerHTML = "POST " +url+ "<br/>"
-        this.exempleContainer[0].innerHTML += "body: <pre>"+args+"</pre>"
 
-        xmlhttp.open("POST", url, true);
-        xmlhttp.setRequestHeader("Content-Type", "application/json");
-        xmlhttp.send(args);
+        let url = "http://127.0.0.1:12402/file?file="+path_image
+        
+        this.exempleContainer[0].innerHTML = "GET " +url+ "<br/>"
+
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
     }
 
     checkStatus() {
         var xmlhttp = new XMLHttpRequest();
-        console.log("plouf")
         xmlhttp.onreadystatechange = () => {
             if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
                if (xmlhttp.status == 200 || xmlhttp.status == 201 || xmlhttp.status == 202 || xmlhttp.status == 203) {
@@ -54,7 +50,7 @@ class Step7 extends Step {
                }
             }
         };
-        let url = "http://127.0.0.1:12403/check-img-status?img="+this.fileName
+        let url = "127.0.0.1:12402/status?id="+this.id
         
         this.exempleContainer[1].innerHTML = "GET " +url+ "<br/>"
         xmlhttp.open("GET", url, true);

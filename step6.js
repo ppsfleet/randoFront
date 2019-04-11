@@ -44,6 +44,7 @@ class Step6 extends Step {
                     {
                         this.html.setAttribute("status",2)
                         clearTimeout(this.timer)
+                        this.next(this.urlFile)
                     }
                }
                else if (xmlhttp.status == 400) {

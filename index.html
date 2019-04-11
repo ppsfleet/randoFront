@@ -219,7 +219,7 @@
             <article class="application" id="app6">
                 <header class="application__description">
                     <h2 class="application__title">Service 6</h2>
-                    <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
+                    <a href="https://github.com/ppsfleet/satiles">https://github.com/ppsfleet/satiles</a>
                 </header>
                  <!--------- Route / ----------->
                  <div class="route">
@@ -382,21 +382,19 @@
         st1.addCallback((e) => {st2.start(e)})
         st2.addCallback((e) => {st3.start(e)})
         st3.addCallback((e) => {st4.start(e)})
-        
         st4.addCallback((e) => {
           d1 = new Date(Date.parse(document.getElementById("date1").value)).toISOString();;
           d2 = new Date(Date.parse(document.getElementById("date2").value)).toISOString();;
           st5.start(e,d1,d2)
         })
-
         st5.addCallback((e) => {st6.start(e)})
         st6.addCallback((e) => {st7.start(e)})
+
 
         function start()
         {
           st1.start(document.getElementById("rando").value)
         }
-
         window.onload = function(){
                 var acc = document.getElementsByClassName("route__top");
                 for (let i = 0; i < acc.length; i++) {
