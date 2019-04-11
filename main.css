@@ -124,6 +124,21 @@ section
     background-image: url("./helium/confirm.svg");
 }
 
+
+.application[status="1"]::after
+{
+    display: block;
+    border-color:blue;
+    background-image: url("./helium/refresh.svg");
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 3s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 .application__description
 {
     text-align: center;
@@ -145,6 +160,13 @@ section
 {
     margin: 0;
     font-size: 1.5em;
+}
+
+.route__server
+{
+    color: gray;
+    font-size: 70%;
+    padding-right: 0.5em;
 }
 
 .route__description

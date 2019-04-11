@@ -2,13 +2,13 @@ class Step4 extends Step {
 
     start(coords) {
         this.html.setAttribute("status",1);
-        this.addlog("starting service 4")
 
         var xmlhttp = new XMLHttpRequest();
 
         xmlhttp.onreadystatechange = () => {
             if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
                if (xmlhttp.status == 200) {
+                    this.exempleContainer[0].innerHTML += "Réponse: <pre>"+xmlhttp.responseText+"</pre>";
                     let square = xmlhttp.responseText
                     this.html.setAttribute("status",2)
                     this.next(square)
@@ -21,10 +21,12 @@ class Step4 extends Step {
                }
             }
         };
-    
+        let args = JSON.stringify({geolocs:coords})
+        this.exempleContainer[0].innerHTML = "POST http://127.0.0.1:12401/mainUTM <br/>"
+        this.exempleContainer[0].innerHTML += "body: <pre>"+args+"</pre>"
         xmlhttp.open("POST", "http://127.0.0.1:12401/mainUTM", true);
         xmlhttp.setRequestHeader("Content-Type", "application/json");
-        xmlhttp.send(JSON.stringify({geolocs:coords}));
+        xmlhttp.send(args);
     }
 
 }

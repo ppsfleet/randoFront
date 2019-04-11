@@ -3,5 +3,7 @@ RUN dnf install -y git redhat-rpm-config gcc python3 gcc-c++ python3-devel gdal-
 RUN git clone https://github.com/ppsfleet/satiles.git
 WORKDIR /satiles
 RUN pip3 install -r requirements.txt
+RUN mkdir /tuiles
+WORKDIR /tuiles
 
-CMD ["python3","satiles.py"]
+CMD ["python3","/satiles/satiles.py"]

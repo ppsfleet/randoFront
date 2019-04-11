@@ -73,10 +73,15 @@ customElements.define('step-element', StepDom);
 */
 
 class Step {
-  constructor(ExempleContainer,appContainer) {
-    this.ExempleContainer = ExempleContainer
+  constructor(exempleContainer,appContainer) {
+    this.exempleContainer = exempleContainer
     this.appContainer = appContainer
     this.html = appContainer
+
+    exempleContainer.forEach(container => {
+      console.log(container)
+      container.innerHTML = "Lancez le test pour générer un exemple "
+    });
   }
 
   addCallback(next) {

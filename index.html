@@ -11,13 +11,15 @@
     <script src="step3.js"></script>
     <script src="step4.js"></script>
     <script src="step5.js"></script>
+    <script src="step6.js"></script>
+    <script src="step7.js"></script>
   </head>
   <body>
       <header class="top">
         <h1 class="top__main-title">RandoLiveTiles</h1>
         <form>
             <label for="rando">Nom de la rando:</label>
-            <input type="text" name="rando-name" id="rando" value="Au Nord de Parsac"/>
+            <input type="text" name="rando-name" id="rando" value="Le Grand Galibier"/>
             
             <label for="date1">Date début:</label>
             <input id="date1" type="date"/>
@@ -37,7 +39,7 @@
                  <!--------- Route /RANDO ----------->
                   <div class="route">
                     <header class="route__top">
-                      <h3 class="route__title"><span class="route__verbe">GET</span> /rando/:nom</h3>
+                      <h3 class="route__title"><span class="route__verbe">GET</span> <span class="route__server">127.0.0.1:12401</span>/rando/:nom</h3>
                       <div class="route__description">Récupére le texte de la randonnée demandée</div>
                     </header>
                     
@@ -52,23 +54,57 @@
                       <!--------- output ---------->
                       <div class="route__output">
                           <div class="route__subtitle">Sortie</div>
-                          <pre>[description des randonnées]</pre>
+                          <pre>[description des randonnées trouvées]</pre>
                       </div>
                       <!--------- exemple --------->
                       <div class="route__exemple">
                           <div class="route__subtitle">Exemple</div>
-                            Get http://127.0.0.1:12401/rando/Au Nord de Parsac
-                            <pre>["Parking avant l'église de Parsac, l'espace devant étant..."]</pre>
+                          <div id="app1-exemple"></div>
                       </div>
                     </div>
                   </div>
             </article>
+
+<!-- 2 --------------------------------------------------------------------------------------------------------------------------------->
+
             <article class="application" id="app2">
                 <header class="application__description">
                     <h2 class="application__title">Service 2</h2>
                     <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
                 </header>
+                <!--------- Route /textannotation ----------->
+                <div class="route">
+                  <header class="route__top">
+                    <h3 class="route__title"><span class="route__verbe">POST</span> <span class="route__server">127.0.0.1:12401</span>/textannotation</h3>
+                    <div class="route__description">Extrait les entités sémantiques (ENS) du texte passé en paramètre</div>
+                  </header>
+                  
+                  <div class="route__content">
+                    <!--------- input ----------->
+                    <div class="route__input">
+                      <div class="route__subtitle">Entrée</div>
+                        - Paramètre POST:
+                        <pre>text : description de la randonnée</pre>
+                      </ul>
+                    </div>
+                    <!--------- output ---------->
+                    <div class="route__output">
+                        <div class="route__subtitle">Sortie</div>
+                        <pre>[  "ENS1","ENS2",...]</pre>
+                    </div>
+                    <!--------- exemple --------->
+                    <div class="route__exemple" >
+                        <div class="route__subtitle">Exemple</div>
+                        <div id="app2-exemple">
+
+                        </div>
+                    </div>
+                  </div>
+                </div>
             </article>
+
+<!-- 3 --------------------------------------------------------------------------------------------------------------------------------->
+
             <article class="application" id="app3">
                 <header class="application__description">
                     <h2 class="application__title">Service 3</h2>
@@ -77,8 +113,8 @@
                 <!--------- Route /locateentities ----------->
                 <div class="route">
                     <header class="route__top">
-                      <h3 class="route__title"><span class="route__verbe">POST</span> /locateentities</h3>
-                      <div class="route__description">Géolocalise les ENS passés en paramètre</div>
+                      <h3 class="route__title"><span class="route__verbe">POST</span> <span class="route__server">127.0.0.1:12401</span>/locateentities</h3>
+                      <div class="route__description">Géolocalise les ENS passées en paramètre</div>
                     </header>
                     
                     <div class="route__content">
@@ -92,41 +128,157 @@
                       <!--------- output ---------->
                       <div class="route__output">
                           <div class="route__subtitle">Sortie</div>
-                          <pre>[  "coordonées1","coordonées2",...]</pre>
+                          <pre>[  "géolocalisation1","géolocalisation2",...]</pre>
                       </div>
                       <!--------- exemple --------->
                       <div class="route__exemple">
                           <div class="route__subtitle">Exemple</div>
-                            POST http://127.0.0.1:12401/locateentities
-                            
-                            <pre>places	[Parsac,Barbanne,Forêt;Alfred_de_Musset,Forêt,Parsac,Carrefour,Alfred_de_Musset]</pre>
-                            
-                            <pre>["46.2030555556 2.15305555556","46.2030555556 2.15305555556"]</pre>
+                          <div id="app3-exemple"></div>
                       </div>
                     </div>
                   </div>
             </article>
+
+<!-- 4 --------------------------------------------------------------------------------------------------------------------------------->
 
             <article class="application" id="app4">
                 <header class="application__description">
                     <h2 class="application__title">Service 4</h2>
                     <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
                 </header>
+                <!--------- Route /randolivetiles ----------->
+                <div class="route">
+                  <header class="route__top">
+                    <h3 class="route__title"><span class="route__verbe">POST</span> <span class="route__server">127.0.0.1:12401</span>/mainUTM</h3>
+                    <div class="route__description">Calcul la zone géographique des géolocalisations passées en paramètre</div>
+                  </header>
+                  
+                  <div class="route__content">
+                    <!--------- input ----------->
+                    <div class="route__input">
+                      <div class="route__subtitle">Entrée</div>
+                        - Paramètre POST:
+                        <pre>geolocs:[  "géolocalisation1","géolocalisation2",...]</pre>
+                      </ul>
+                    </div>
+                    <!--------- output ---------->
+                    <div class="route__output">
+                        <div class="route__subtitle">Sortie</div>
+                        <pre>[  "coordonée1","coordonée2","coordonée3","coordonée4"]</pre>
+                    </div>
+                    <!--------- exemple --------->
+                    <div class="route__exemple">
+                        <div class="route__subtitle">Exemple</div>
+                        <div id="app4-exemple"></div>
+                    </div>
+                  </div>
+                </div>
             </article>
+
+<!-- 5 ------------------------------------------------------------------------------------------------------------------------------->
 
             <article class="application" id="app5">
                 <header class="application__description">
                     <h2 class="application__title">Service 5</h2>
                     <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
                 </header>
+                <!--------- Route /satelliteimage ----------->
+                <div class="route">
+                  <header class="route__top">
+                    <h3 class="route__title"><span class="route__verbe">GET</span> <span class="route__server">127.0.0.1:12401</span>/satelliteimage/:zone</h3>
+                    <div class="route__description">Récupére une liste d’images satellites sentinelle 2 dans la zone et l'intervalle de date demandés</div>
+                  </header>
+                  
+                  <div class="route__content">
+                    <!--------- input ----------->
+                    <div class="route__input">
+                      <div class="route__subtitle">Entrée</div>
+                        - Paramètre URL:
+                        <pre>zone: coordonée1,coordonée2,coordonée3,coordonée4</pre>
+                        - Paramètre GET:
+                        <pre>dateBegin: date debut de recherche d'image au format iso 8601</pre>
+                        <pre>dateEnd: date fin de recherche d'image au format iso 8601</pre>
+                      </ul>
+                    </div>
+                    <!--------- output ---------->
+                    <div class="route__output">
+                        <div class="route__subtitle">Sortie</div>
+                        <pre>{"img":[{"location":...,"projection":...,"url":...,"cloudCover":...,"date":...,"level":...},{...},...]</pre>
+                    </div>
+                    <!--------- exemple --------->
+                    <div class="route__exemple">
+                        <div class="route__subtitle">Exemple</div>
+                        <div id="app5-exemple"></div>
+                    </div>
+                  </div>
+                </div>
             </article>
+
+<!-- 6 ------------------------------------------------------------------------------------------------------------------------------->
 
             <article class="application" id="app6">
                 <header class="application__description">
                     <h2 class="application__title">Service 6</h2>
                     <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
                 </header>
+                 <!--------- Route / ----------->
+                 <div class="route">
+                  <header class="route__top">
+                    <h3 class="route__title"><span class="route__verbe">POST</span> <span class="route__server">127.0.0.1:12403</span>/</h3>
+                    <div class="route__description">Tuile une image satellite avec GDAL2TILES</div>
+                  </header>
+                  
+                  <div class="route__content">
+                    <!--------- input ----------->
+                    <div class="route__input">
+                      <div class="route__subtitle">Entrée</div>
+                        - Paramètre POST:
+                        <pre>url: url de l'image</pre>
+                      </ul>
+                    </div>
+                    <!--------- output ---------->
+                    <div class="route__output">
+                        <div class="route__subtitle">Sortie</div>
+                        <pre>/path/to/img/dir/07ddd0cf-defa-53e8-ac34-c8a1b3e8cb7c</pre>
+                    </div>
+                    <!--------- exemple --------->
+                    <div class="route__exemple">
+                        <div class="route__subtitle">Exemple</div>
+                        <div id="app6-exemple"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--------- Route / ----------->
+                <div class="route">
+                  <header class="route__top">
+                    <h3 class="route__title"><span class="route__verbe">GET</span> <span class="route__server">127.0.0.1:12403</span>/check-img-status</h3>
+                    <div class="route__description">Verifie si le tuilage est terminé</div>
+                  </header>
+                  
+                  <div class="route__content">
+                    <!--------- input ----------->
+                    <div class="route__input">
+                      <div class="route__subtitle">Entrée</div>
+                        - Paramètre GET:
+                        <pre>img: nom de l'image</pre>
+                      </ul>
+                    </div>
+                    <!--------- output ---------->
+                    <div class="route__output">
+                        <div class="route__subtitle">Sortie</div>
+                        <pre>true ou false</pre>
+                    </div>
+                    <!--------- exemple --------->
+                    <div class="route__exemple">
+                        <div class="route__subtitle">Exemple</div>
+                        <div id="app6-exemple2"></div>
+                    </div>
+                  </div>
+                </div>
             </article>
+
+<!-- 7 -------------------------------------------------------------------------------------------------------------------------------->
 
             <article class="application" id="app7">
                 <header class="application__description">
@@ -136,7 +288,7 @@
                 <!--------- Route ----------->
                 <div class="route">
                   <header class="route__top">
-                    <h3 class="route__title"><span class="route__verbe">GET</span> /file</h3>
+                    <h3 class="route__title"><span class="route__verbe">GET</span> <span class="route__server">127.0.0.1:12402</span>/file</h3>
                     <div class="route__description">Demmare l'upload de fichier vers hdfs et renvoie l'id du processus en cours</div>
                   </header>
                   
@@ -156,15 +308,14 @@
                     <!--------- exemple --------->
                     <div class="route__exemple">
                         <div class="route__subtitle">Exemple</div>
-                          Get http://localhost:12402?file=/tuiles/tuiles
-                          <pre>1</pre>
+                        <div id="app7-exemple"></div>
                     </div>
                   </div>
                 </div>
                 <!--------- Route ----------->
                 <div class="route">
                   <header class="route__top">
-                      <h3 class="route__title"><span class="route__verbe">GET</span> /status</h3>
+                      <h3 class="route__title"><span class="route__verbe">GET</span> <span class="route__server">127.0.0.1:12402</span>/status</h3>
                       <div class="route__description">Renvoie le status du processus avec l'id demandé</div>
                   </header>
                   <div class="route__content">
@@ -187,12 +338,13 @@
                     <!--------- exemple --------->
                     <div class="route__exemple">
                         <div class="route__subtitle">Exemple</div>
-                          Get http://localhost:12402?file=/tuiles/tuiles
-                          <pre>1</pre>
+                        <div id="app7-exemple2"></div>
                     </div>
                   </div>
                 </div>
             </article>
+
+<!-- 8 -------------------------------------------------------------------------------------------------------------------------------->
 
             <article class="application" id="app8">
                 <header class="application__description">
@@ -200,6 +352,8 @@
                     <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
                 </header>
             </article>
+
+<!-- 9 -------------------------------------------------------------------------------------------------------------------------------->
 
             <article class="application" id="app9">
                 <header class="application__description">
@@ -210,11 +364,19 @@
           </section>
       </main>
       <script>
-        let st1 = new Step1(null,document.getElementById("app1"))
-        let st2 = new Step2(null,document.getElementById("app2"))
-        let st3 = new Step3(null,document.getElementById("app3"))
-        let st4 = new Step4(null,document.getElementById("app4"))
-        let st5 = new Step5(null,document.getElementById("app5"))
+        let st1 = new Step1([document.getElementById("app1-exemple")],document.getElementById("app1"))
+        let st2 = new Step2([document.getElementById("app2-exemple")],document.getElementById("app2"))
+        let st3 = new Step3([document.getElementById("app3-exemple")],document.getElementById("app3"))
+        let st4 = new Step4([document.getElementById("app4-exemple")],document.getElementById("app4"))
+        let st5 = new Step5([document.getElementById("app5-exemple")],document.getElementById("app5"))
+        let st6 = new Step6([
+            document.getElementById("app6-exemple"),
+            document.getElementById("app6-exemple2")],
+            document.getElementById("app6"))
+        let st7 = new Step7([
+            document.getElementById("app7-exemple"),
+            document.getElementById("app7-exemple2")],
+            document.getElementById("app7"))
         
         
         st1.addCallback((e) => {st2.start(e)})
@@ -227,10 +389,14 @@
           st5.start(e,d1,d2)
         })
 
+        st5.addCallback((e) => {st6.start(e)})
+        st6.addCallback((e) => {st7.start(e)})
+
         function start()
         {
-          st1.start("Au Nord de Parsac")
+          st1.start(document.getElementById("rando").value)
         }
+
         window.onload = function(){
                 var acc = document.getElementsByClassName("route__top");
                 for (let i = 0; i < acc.length; i++) {
@@ -246,8 +412,6 @@
                     } 
                   })
                 }
-
-                
         }         
       </script>
   </body>
