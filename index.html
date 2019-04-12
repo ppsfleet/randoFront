@@ -5,15 +5,16 @@
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/elaine-sans" type="text/css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 
-    <script src="step.js"></script>
-    <script src="step1.js"></script>
-    <script src="step2.js"></script>
-    <script src="step3.js"></script>
-    <script src="step4.js"></script>
-    <script src="step5.js"></script>
-    <script src="step6.js"></script>
-    <script src="step7.js"></script>
-    <script src="step8.js"></script>
+    <script src="steps/step.js"></script>
+    <script src="steps/step1.js"></script>
+    <script src="steps/step2.js"></script>
+    <script src="steps/step3.js"></script>
+    <script src="steps/step4.js"></script>
+    <script src="steps/step5.js"></script>
+    <script src="steps/step6.js"></script>
+    <script src="steps/step7.js"></script>
+    <script src="steps/step8.js"></script>
+    <script src="steps/step9.js"></script>
 
   </head>
   <body>
@@ -406,12 +407,28 @@
                     <!--------- output ---------->
                     <div class="route__output">
                         <div class="route__subtitle">Sortie</div>
-                        <pre></pre>
+                        <pre>
+{
+  "took" : 76,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 5,
+    "max_score" : 1.0,
+    "hits" : [...]
+  }
+}
+                        </pre>
                     </div>
                     <!--------- exemple --------->
                     <div class="route__exemple">
                         <div class="route__subtitle">Exemple</div>
-                        <div id="app8-exemple"></div>
+                        <div id="app9-exemple"></div>
                     </div>
                   </div>
                 </div>
@@ -433,7 +450,7 @@
             document.getElementById("app7-exemple2")],
             document.getElementById("app7"))
         let st8 = new Step8([document.getElementById("app8-exemple")],document.getElementById("app8"))
-
+        let st9 = new Step9([document.getElementById("app9-exemple")],document.getElementById("app9"))
 
         st1.addCallback((e) => {st2.start(e)})
         st2.addCallback((e) => {st3.start(e)})
@@ -446,7 +463,7 @@
         st5.addCallback((e) => {st6.start(e)})
         st6.addCallback((e) => {st7.start(e)})
         st7.addCallback((e) => {st8.start(e)})
-
+        st8.addCallback(() => {st9.start()})
 
         function start()
         {

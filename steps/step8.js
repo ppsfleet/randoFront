@@ -13,6 +13,7 @@ class Step8 extends Step {
                if (xmlhttp.status == 200) {
                     this.exempleContainer[0].innerHTML += "Réponse: <pre>"+xmlhttp.responseText+"</pre>";
                     this.html.setAttribute("status",2)
+                    this.next()
                }
                else if (xmlhttp.status == 400) {
                     this.html.setAttribute("status",0)

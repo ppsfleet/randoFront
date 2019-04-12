@@ -11,6 +11,7 @@ class Step4 extends Step {
                     this.exempleContainer[0].innerHTML += "Réponse: <pre>"+xmlhttp.responseText+"</pre>";
                     let square = xmlhttp.responseText
                     this.html.setAttribute("status",2)
+                    this.square = square
                     this.next(square)
                }
                else if (xmlhttp.status == 400) {
