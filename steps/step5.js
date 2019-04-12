@@ -13,10 +13,18 @@ class Step5 extends Step {
                if (xmlhttp.status == 200) {
                     this.exempleContainer[0].innerHTML += "Réponse: <pre>"+xmlhttp.responseText+"</pre>";
                     let images = JSON.parse(xmlhttp.responseText)
-                    let firstUrl = images['img'][0]['url']
-                    this.imageData = images['img'][0]
-                    this.html.setAttribute("status",2)
-                    this.next(firstUrl)
+                    if (images['img'].length > 0)
+                    {
+                        let firstUrl = images['img'][0]['url']
+                        this.imageData = images['img'][0]
+                        this.html.setAttribute("status",2)
+                        this.next(firstUrl)
+                    }
+                    else
+                    {
+                        this.html.setAttribute("status",0)
+                    }
+                  
                }
                else if (xmlhttp.status == 400) {
                     this.html.setAttribute("status",0)
