@@ -12,6 +12,7 @@ class Step8 extends Step {
             if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
                if (xmlhttp.status == 200) {
                     this.exempleContainer[0].innerHTML += "Réponse: <pre>"+xmlhttp.responseText+"</pre>";
+                    this.html.setAttribute("status",2)
                }
                else if (xmlhttp.status == 400) {
                     this.html.setAttribute("status",0)
@@ -26,7 +27,8 @@ class Step8 extends Step {
         this.exempleContainer[0].innerHTML = "POST "+url+"<br/>"
         this.exempleContainer[0].innerHTML += "body: <pre>"+args+"</pre>"
         xmlhttp.open("POST", url, true);
-        xmlhttp.send();
+        xmlhttp.setRequestHeader("Content-Type", "application/json");
+        xmlhttp.send(args);
     }
 
 

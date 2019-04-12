@@ -1,13 +1,15 @@
 version: '3'
 services:
   randolivetiles:
+    env_file:
+      - .env
     build: 
         context: .
         dockerfile: ./docker-randolivetiles
     ports:
       - "12401:9000"
     links:
-      - elastic:localhost
+      - elastic:elastic
     depends_on:
       - elastic
   hdfsup:

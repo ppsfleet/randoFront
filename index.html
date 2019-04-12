@@ -1,7 +1,7 @@
 <html>
   <head>
     <title></title>
-    <meta content="">
+    <meta charset="utf-8" />
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/elaine-sans" type="text/css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 
@@ -356,7 +356,7 @@
                 </header>
                 <div class="route">
                   <header class="route__top">
-                    <h3 class="route__title"><span class="route__verbe">POST</span> <span class="route__server">127.0.0.1:12401</span>http://127.0.0.1:12401/indexelastic/</h3>
+                    <h3 class="route__title"><span class="route__verbe">POST</span> <span class="route__server">127.0.0.1:12401</span>http://127.0.0.1:12401/indexelastic</h3>
                     <div class="route__description">Insère les meta-données de l’image dans un elastic search</div>
                   </header>
 
@@ -371,7 +371,7 @@
                     <!--------- output ---------->
                     <div class="route__output">
                         <div class="route__subtitle">Sortie</div>
-                        <pre>/path/to/img/dir/07ddd0cf-defa-53e8-ac34-c8a1b3e8cb7c</pre>
+                        <pre>{"_index":...,"_type":...,"_id":...,"_version":1,"result":"created","_shards":...,"_seq_no":...,"_primary_term":...}</pre>
                     </div>
                     <!--------- exemple --------->
                     <div class="route__exemple">
@@ -389,6 +389,32 @@
                     <h2 class="application__title">Service 9</h2>
                     <a href="https://github.com/ppsfleet/randolivetiles">https://github.com/ppsfleet/randolivetiles</a>
                 </header>
+                <div class="route">
+                  <header class="route__top">
+                    <h3 class="route__title"><span class="route__verbe">GET</span> <span class="route__server">127.0.0.1:12401</span>http://127.0.0.1:12401/search</h3>
+                    <div class="route__description">Insère les meta-données de l’image dans un elastic search</div>
+                  </header>
+
+                  <div class="route__content">
+                    <!--------- input ----------->
+                    <div class="route__input">
+                      <div class="route__subtitle">Entrée</div>
+                        - Paramètre GET:
+                        <pre>Box : zone géobox</pre>
+                      </ul>
+                    </div>
+                    <!--------- output ---------->
+                    <div class="route__output">
+                        <div class="route__subtitle">Sortie</div>
+                        <pre></pre>
+                    </div>
+                    <!--------- exemple --------->
+                    <div class="route__exemple">
+                        <div class="route__subtitle">Exemple</div>
+                        <div id="app8-exemple"></div>
+                    </div>
+                  </div>
+                </div>
             </article>
           </section>
       </main>
