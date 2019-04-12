@@ -2,7 +2,7 @@
   <head>
     <title></title>
     <meta content="">
-    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/elaine-sans" type="text/css"/> 
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/elaine-sans" type="text/css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 
     <script src="step.js"></script>
@@ -22,13 +22,13 @@
         <form>
             <label for="rando">Nom de la rando:</label>
             <input type="text" name="rando-name" id="rando" value="Le Grand Galibier"/>
-            
+
             <label for="date1">Date début:</label>
             <input id="date1" type="date"/>
-            <label for="date1">Date fin:</label> 
-            <input id="date2" type="date"/> 
+            <label for="date1">Date fin:</label>
+            <input id="date2" type="date"/>
             <br/>
-            <input type="button" value="Démmarer" onclick="start()"/> 
+            <input type="button" value="Démmarer" onclick="start()"/>
           </form>
       </header>
       <main>
@@ -42,9 +42,9 @@
                   <div class="route">
                     <header class="route__top">
                       <h3 class="route__title"><span class="route__verbe">GET</span> <span class="route__server">127.0.0.1:12401</span>/rando/:nom</h3>
-                      <div class="route__description">Récupére le texte de la randonnée demandée</div>
+                      <div class="route__description">Récupère le texte de la randonnée demandée</div>
                     </header>
-                    
+
                     <div class="route__content">
                       <!--------- input ----------->
                       <div class="route__input">
@@ -80,7 +80,7 @@
                     <h3 class="route__title"><span class="route__verbe">POST</span> <span class="route__server">127.0.0.1:12401</span>/textannotation</h3>
                     <div class="route__description">Extrait les entités sémantiques (ENS) du texte passé en paramètre</div>
                   </header>
-                  
+
                   <div class="route__content">
                     <!--------- input ----------->
                     <div class="route__input">
@@ -118,7 +118,7 @@
                       <h3 class="route__title"><span class="route__verbe">POST</span> <span class="route__server">127.0.0.1:12401</span>/locateentities</h3>
                       <div class="route__description">Géolocalise les ENS passées en paramètre</div>
                     </header>
-                    
+
                     <div class="route__content">
                       <!--------- input ----------->
                       <div class="route__input">
@@ -154,7 +154,7 @@
                     <h3 class="route__title"><span class="route__verbe">POST</span> <span class="route__server">127.0.0.1:12401</span>/mainUTM</h3>
                     <div class="route__description">Calcul la zone géographique (Geobox) des géolocalisations passées en paramètre</div>
                   </header>
-                  
+
                   <div class="route__content">
                     <!--------- input ----------->
                     <div class="route__input">
@@ -188,9 +188,9 @@
                 <div class="route">
                   <header class="route__top">
                     <h3 class="route__title"><span class="route__verbe">GET</span> <span class="route__server">127.0.0.1:12401</span>/satelliteimage/:zone</h3>
-                    <div class="route__description">Récupére une liste d’images satellites sentinelle 2 dans la zone geobox et l'intervalle de date demandés</div>
+                    <div class="route__description">Récupère une liste d’images satellites sentinelle 2 dans la zone geobox et l'intervalle de date demandés</div>
                   </header>
-                  
+
                   <div class="route__content">
                     <!--------- input ----------->
                     <div class="route__input">
@@ -229,7 +229,7 @@
                     <h3 class="route__title"><span class="route__verbe">POST</span> <span class="route__server">127.0.0.1:12403</span>/</h3>
                     <div class="route__description">Tuile une image satellite avec GDAL2TILES</div>
                   </header>
-                  
+
                   <div class="route__content">
                     <!--------- input ----------->
                     <div class="route__input">
@@ -255,9 +255,9 @@
                 <div class="route">
                   <header class="route__top">
                     <h3 class="route__title"><span class="route__verbe">GET</span> <span class="route__server">127.0.0.1:12403</span>/check-img-status</h3>
-                    <div class="route__description">Verifie si le tuilage est terminé</div>
+                    <div class="route__description">Vérifie si le tuilage est terminé</div>
                   </header>
-                  
+
                   <div class="route__content">
                     <!--------- input ----------->
                     <div class="route__input">
@@ -291,9 +291,9 @@
                 <div class="route">
                   <header class="route__top">
                     <h3 class="route__title"><span class="route__verbe">GET</span> <span class="route__server">127.0.0.1:12402</span>/file</h3>
-                    <div class="route__description">Demmare l'upload de fichier vers hdfs et renvoie l'id du processus en cours</div>
+                    <div class="route__description">Démarre l'upload de fichier vers hdfs et renvoie l'id du processus en cours</div>
                   </header>
-                  
+
                   <div class="route__content">
                     <!--------- input ----------->
                     <div class="route__input">
@@ -357,9 +357,9 @@
                 <div class="route">
                   <header class="route__top">
                     <h3 class="route__title"><span class="route__verbe">POST</span> <span class="route__server">127.0.0.1:12401</span>http://127.0.0.1:12401/indexelastic/</h3>
-                    <div class="route__description">Insére les meta-données de l’image dans un elastic search</div>
+                    <div class="route__description">Insère les meta-données de l’image dans un elastic search</div>
                   </header>
-                  
+
                   <div class="route__content">
                     <!--------- input ----------->
                     <div class="route__input">
@@ -407,8 +407,8 @@
             document.getElementById("app7-exemple2")],
             document.getElementById("app7"))
         let st8 = new Step8([document.getElementById("app8-exemple")],document.getElementById("app8"))
-        
-        
+
+
         st1.addCallback((e) => {st2.start(e)})
         st2.addCallback((e) => {st3.start(e)})
         st3.addCallback((e) => {st4.start(e)})
@@ -438,10 +438,10 @@
                       panel.style.maxHeight = null;
                     } else {
                       panel.style.maxHeight = panel.scrollHeight + "px";
-                    } 
+                    }
                   })
                 }
-        }         
+        }
       </script>
   </body>
 </html>
