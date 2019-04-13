@@ -14,10 +14,12 @@ class Step7 extends Step {
                }
                else if (xmlhttp.status == 400) {
                     this.html.setAttribute("status",0)
+                    clearTimeout(this.timer)
                }
                else {
                     this.html.setAttribute("status",0)
                     this.exempleContainer[0].innerHTML += "Réponse: <pre> error"+xmlhttp.status+"</pre>";
+                    clearTimeout(this.timer)
                }
             }
         };

@@ -48,9 +48,11 @@ class Step6 extends Step {
                }
                else if (xmlhttp.status == 400) {
                     this.html.setAttribute("status",0)
+                    clearTimeout(this.timer)
                }
                else {
                     this.html.setAttribute("status",0)
+                    clearTimeout(this.timer)
                }
             }
         };
