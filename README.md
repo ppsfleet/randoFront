@@ -3,7 +3,7 @@
 ## Installation
 - Copiez vos clés ssh dans le dossier ssh, elles servirons pour se connecter à Torus
 - Éditez le fichier .env en mettant vos identifiants Torus et PEPS
-- Démarrer le vpn pour vous connecter en ssh aux serveurs de torus
+- Démarrez le vpn pour vous connecter en ssh aux serveurs de torus
 - Enregistrez votre clé publique sur le serveur torus
 - `docker-compose up` - la compilation prend du temps, ce serait mieux si votre ordinateur ne se mettait pas en veille durant le processus
 - Ouvrez `index.html` dans votre navigateur internet, les services y sont détaillés et il est possible de les lancer depuis cette interface
